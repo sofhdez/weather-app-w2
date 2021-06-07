@@ -25,6 +25,9 @@ li {
   font-size: 16px;
   font-weight: 100px;
   line-height: 19px;
+}
+
+li::first-letter {
   text-transform: capitalize;
 }
 
