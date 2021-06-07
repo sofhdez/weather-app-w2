@@ -25,4 +25,10 @@ li {
   font-size: 16px;
   font-weight: 100px;
   line-height: 19px;
+  text-transform: capitalize;
+}
+
+strong {
+  font-size: 50px;
+  font-weight: 400;
 }

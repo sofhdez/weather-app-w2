@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="src/style.css">
     <title>Weather App</title>
 </head>
@@ -14,21 +16,30 @@
 <body>
     <div class="container">
         <div class="weather-app">
-            <h1>New York</h1>
+            <h1 id="city">?</h1>
             <ul>
                 <li>Friday 05:00</li>
-                <li>Clear</li>
+                <li id="description">Clear</li>
             </ul>
             <div class="row">
                 <div class="col-6">
                     <img src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png" alt="Cloud">
-                    12°C | °F
+                    <strong id="temperature">12</strong>
+                    <span class="units">
+                        °C |
+                        <a href="#">
+                            °F
+                        </a>
+                    </span>
                 </div>
                 <div class="col-6">
                     <ul>
-                        <li>Precipitation: 0%</li>
-                        <li>Humidity: 73%</li>
-                        <li>Wind: 2 km/h</li>
+                        <li>Humidity:
+                            <span id="humidity">#</span>%
+                        </li>
+                        <li>Wind:
+                            <span id="wind">#</span> km/h
+                        </li>
                     </ul>
                 </div>
                 <small>
