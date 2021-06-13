@@ -33,10 +33,18 @@ function showTemp(response){
 
     let windElement = document.querySelector("#wind");
     windElement.innerHTML = Math.round(response.data.wind.speed);
+
+    let iconApi = response.data.weather[0].icon;
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+        "src", `http://openweathermap.org/img/wn/${iconApi}@2x.png`
+    );
+    iconElement.setAttribute(
+        "alt", response.data.weather[0].description);
 }
 
 let apiKey = "ca1884a51c72d345d98c6a29cd188093";
-let cityName = "New York";
+let cityName = "Los Angeles";
 
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
