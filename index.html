@@ -16,7 +16,18 @@
 <body>
     <div class="container">
         <div class="weather-app">
-            <h1 id="city">?</h1>
+            <form id="search-form" class="mb-2">
+                <div class="row">
+                    <div class="col-9">
+                        <input type="search" placeholder="Type a city" class="form-control" id="city-input"
+                            autocomplete="off">
+                    </div>
+                    <div class="col-3">
+                        <input type="submit" value="Search" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+            <h1 id="city">New York</h1>
             <ul>
                 <li>Last updated:
                     <span id="date"></span>
@@ -25,7 +36,7 @@
             </ul>
             <div class="row">
                 <div class="col-6">
-                    <img src="" alt="Cloud" id="icon" class="float-left">
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="Cloud" id="icon" class="float-left">
                     <strong id="temperature">12</strong>
                     <span class="units">
                         °C |
@@ -44,13 +55,13 @@
                         </li>
                     </ul>
                 </div>
-                <small>
-                    <a href="https://github.com/sofhdez/weather-app-w2" target="_blank">
-                        Open source</a>
-                    code, by Sofia Hernandez
-                </small>
             </div>
         </div>
+        <small>
+            <a href="https://github.com/sofhdez/weather-app-w2" target="_blank">
+                Open source</a>
+            code, by Sofia Hernandez
+        </small>
     </div>
 
     <script src="src/app.js"></script>
