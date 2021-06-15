@@ -7,7 +7,7 @@
 }
 
 h1 {
-  color: #878787;
+  color: #0a1931;
   font-size: 24px;
   font-weight: 100px;
   line-height: 29px;
@@ -34,8 +34,17 @@ li::first-letter {
 strong {
   font-size: 50px;
   font-weight: 400;
+  color: #4d4c4c;
 }
 
 a {
   text-decoration: none;
+}
+
+.btn {
+  color: white;
+}
+
+.btn:hover {
+  color: black;
 }

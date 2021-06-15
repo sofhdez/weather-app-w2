@@ -9,10 +9,8 @@ function formatDate(timestamp) {
     if (minutes < 10) {
         minutes = `${0[minutes]}`;
     }
-
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let day = days[date.getDate() - 1];
-    return `${day} ${hours}:${minutes}`;
+    
+    return `${hours}:${minutes}`;
 }
 
 function showTemp(response){
@@ -49,6 +47,15 @@ function search(cityName) {
     axios.get(apiUrl).then(showTemp);
 }
 
+function getPosition(position){
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    let apiKey = "ca1884a51c72d345d98c6a29cd188093";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(showTemp);
+}
+
 function handleSubmit(event) {
     event.preventDefault();
     let cityInputElement = document.querySelector("#city-input");
@@ -81,3 +88,8 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let currentForm = document.querySelector("#currentTemp");
+currentForm.addEventListener("submit", getPosition);
+
+navigator.geolocation.getCurrentPosition(getPosition);
