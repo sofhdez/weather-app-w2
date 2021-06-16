@@ -2,15 +2,28 @@ function formatDate(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
     if (hours < 10) {
-        hours = `${0[hours]}`;
+        hours = `0${hours}`;
     }
 
     let minutes = date.getMinutes();
     if (minutes < 10) {
-        minutes = `${0[minutes]}`;
+        minutes = `0${minutes}`;
     }
+
+    let dayIndex = date.getDay();
+    let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+    ];
+
+    let day = days[dayIndex];
     
-    return `${hours}:${minutes}`;
+    return `${day} ${hours}:${minutes}`;
 }
 
 function showTemp(response){
@@ -47,7 +60,14 @@ function search(cityName) {
     axios.get(apiUrl).then(showTemp);
 }
 
-function getPosition(position){
+function handleSubmit(event) {
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input").value;
+
+    search(cityInputElement);
+}
+
+function searchPosition(position){
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
 
@@ -56,12 +76,9 @@ function getPosition(position){
     axios.get(apiUrl).then(showTemp);
 }
 
-function handleSubmit(event) {
+function getCurrentLocation(event) {
     event.preventDefault();
-    let cityInputElement = document.querySelector("#city-input");
-    console.log(cityInputElement.value);
-
-    search(cityInputElement.value);
+    navigator.geolocation.getCurrentPosition(searchPosition);
 }
 
 function displayFahrenheitTemp(event) {
@@ -89,7 +106,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
-let currentForm = document.querySelector("#currentTemp");
-currentForm.addEventListener("submit", getPosition);
-
-navigator.geolocation.getCurrentPosition(getPosition);
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
